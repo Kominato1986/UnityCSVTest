@@ -4,12 +4,20 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Text.RegularExpressions;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlatformSpecificCsvReader : MonoBehaviour
 {
     private string csvFileName = "DQ2Buki.csv";
     public TextMeshProUGUI textMeshPro;
+
+  // Startメソッドはオブジェクトがアクティブになった最初のフレームで一度だけ呼び出されます。
     void Start()
+    {
+        StartCoroutine(LoadCsvFile());
+    }
+
+    IEnumerator LoadCsvFile()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, csvFileName);
 
@@ -49,15 +57,13 @@ public class PlatformSpecificCsvReader : MonoBehaviour
         }
 
         string[] lines = csvText.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-        
         foreach (string line in lines)
         {
             string[] fields = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
             foreach (string field in fields)
             {
                 Debug.Log(field.Trim().Trim('"'));
-                //セルの文字列を表示させる
-                textMeshPro.text += (field + "\n") ;
+                textMeshPro.text += (field + "\n");
             }
         }
     }
