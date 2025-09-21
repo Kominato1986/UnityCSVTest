@@ -16,12 +16,12 @@ public class Offset
         y = Y;
     }
 
-    string GetKey()
+    public string GetKey()
     {
         return key;
     }
 
-    Vector2 GetPosition()
+    public Vector2 GetPosition()
     {
         return new Vector2(x, y);
     }

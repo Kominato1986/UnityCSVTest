@@ -12,6 +12,9 @@ public class MainData : MonoBehaviour
     List<Scene> sceneData = new List<Scene>();
     List<Act> acts = new List<Act>();
 
+    int act_index = 0;
+    int anime_index = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     async void Start()
     {
@@ -82,10 +85,10 @@ public class MainData : MonoBehaviour
                 List<string> strings = new List<string>();
                 strings = act_data[i].ToList<string>();
                 strings.Remove(act_data[i][0]);
-                
+
                 acts.Add(new Act(act_data[i][0], strings));
             }
-            
+
             Debug.Log("演出データのCSVファイルの読み込みが完了しました。");
         }
         else
@@ -93,11 +96,39 @@ public class MainData : MonoBehaviour
             Debug.LogError("演出データのCSVデータの取得に失敗しました。");
         }
 
+        //データ取り出し処理
+        foreach (var actitem in acts)
+        {
+            Debug.Log(actitem.key);
+            foreach (var sceneKey in actitem.scenes)
+            {
+                if (sceneKey != "")
+                {
+                    Scene scene = sceneData.FirstOrDefault(p => p.key == sceneKey);
+                    Debug.Log(scene.key);
+                    Debug.Log("start"+scene.start);
+                    Debug.Log("end"+scene.end);
+                    Offset offset_tmpe = offsets.FirstOrDefault(p => p.key == scene.ofset);
+                    Debug.Log(offset_tmpe.key + "," + offset_tmpe.GetPosition().ToString());
+                    Debug.Log("angle"+scene.angle);
+                    AnimData anim = animDatas.FirstOrDefault(p => p.key == scene.AnimData);
+                    foreach (var animPath in anim.GetAnimPathList())
+                    {
+                        if (animPath !="") {
+                            Debug.Log(animPath);                            
+                        }
+
+                    }
+                    
+                }
+
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("動作確認用");
+        
     }
 }
