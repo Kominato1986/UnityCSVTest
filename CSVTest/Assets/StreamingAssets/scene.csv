@@ -1,0 +1,12 @@
+﻿演出ブロック,開始フレーム,フレーム数,オフセット位置,角度,アニメーション
+opening,0,5,中央,0,Anim01
+prologue,0,5,右上,0,Anim02
+scene1,15,5,左下,30,Anim03
+scene2,30,5,右下,15,Anim04
+scene3,0,5,左上,330,Anim05
+scene4,0,10,中央,345,Anim01
+scene5,0,5,右上,0,Anim02
+scene6,0,5,左下,30,Anim03
+scene7,0,5,右下,15,Anim04
+scene8,0,5,左上,330,Anim05
+scene9,0,5,中央,345,Anim05
