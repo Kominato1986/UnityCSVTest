@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class PlatformSpecificCsvReader : MonoBehaviour
 {
-    private string csvFileName = "DQ2Buki.csv";
+    private string csvFileName = "block.csv";
     public TextMeshProUGUI textMeshPro;
 
   // Startメソッドはオブジェクトがアクティブになった最初のフレームで一度だけ呼び出されます。
